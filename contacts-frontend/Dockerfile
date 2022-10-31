@@ -1,7 +1,10 @@
 FROM node:alpine as builder
 WORKDIR '/app'
-COPY ./package.json ./
-npm install --legacy-peer-deps
+
+npm config set legacy-peer-deps true
+npm cache clean --force
+
+npm install
 COPY . .
 RUN npm run build
 
