@@ -1,12 +1,11 @@
 FROM node:alpine as builder
-WORKDIR '/app'
-
-npm config set legacy-peer-deps true
-npm cache clean --force
-
-npm install
-COPY . .
+WORKDIR /usr/src/app
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . ./
 RUN npm run build
+
+
 
 FROM nginx
 EXPOSE 4200
