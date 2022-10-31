@@ -29,8 +29,8 @@ steps:
 
 - task: Docker@2
   inputs:
-    containerRegistry: 'Docker-raghav141988'
-    repository: 'raghav141988/contacts-backend'
+    containerRegistry: 'Docker-bhavanaaz400'
+    repository: 'bhavanaaz400/contacts-backend'
     command: 'buildAndPush'
     Dockerfile: './contacts-backend/Dockerfile'
     buildContext: './contacts-backend'
@@ -39,8 +39,8 @@ steps:
       $(Build.BuildId)
 - task: Docker@2
   inputs:
-    containerRegistry: 'Docker-raghav141988'
-    repository: 'raghav141988/contacts-frontend'
+    containerRegistry: 'Docker-bhavanaaz400'
+    repository: 'bhavanaaz400/contacts-frontend'
     command: 'buildAndPush'
     Dockerfile: './contacts-frontend/Dockerfile'
     buildContext: './contacts-frontend'
@@ -56,7 +56,7 @@ steps:
     arguments: '-f ./contacts-deployment/k8s'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Container Registry'
-    dockerRegistryEndpoint: 'Docker-raghav141988'
+    dockerRegistryEndpoint: 'Docker-bhavanaaz400'
     secretName: 'docker-secret'
 - task: Kubernetes@1
   inputs:
@@ -64,17 +64,17 @@ steps:
     kubernetesServiceEndpoint: 'contactsServiceConnection'
     namespace: 'kube-system'
     command: 'set'
-    arguments: 'image deployment/contact-frontend-deployment contacts-frontend=raghav141988/contacts-frontend:$(Build.BuildId)'
+    arguments: 'image deployment/contact-frontend-deployment contacts-frontend=bhavanaaz400/contacts-frontend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Container Registry'
-    dockerRegistryEndpoint: 'Docker-raghav141988'
+    dockerRegistryEndpoint: 'Docker-bhavanaaz400'
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
     namespace: 'kube-system'
     command: 'set'
-    arguments: 'image deployment/contact-backend-deployment contacts-api=raghav141988/contacts-backend:$(Build.BuildId)'
+    arguments: 'image deployment/contact-backend-deployment contacts-api=bhavanaaz400/contacts-backend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Container Registry'
-    dockerRegistryEndpoint: 'Docker-raghav141988'
+    dockerRegistryEndpoint: 'Docker-bhavanaaz400'
