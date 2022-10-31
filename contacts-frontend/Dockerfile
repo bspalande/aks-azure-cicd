@@ -1,18 +1,9 @@
-# syntax=docker/dockerfile:1
-
-FROM node:12.18.1 as builder
-ENV NODE_ENV=production
-
+FROM alpine as builder
+RUN apk add --update nodejs npm
 WORKDIR /app
-
-COPY ["package.json", "package-lock.json*", "./"]
-
-RUN npm install
-
+COPY package*.json ./
+RUN npm ci
 COPY . .
-
-
-
 
 FROM nginx
 EXPOSE 4200
