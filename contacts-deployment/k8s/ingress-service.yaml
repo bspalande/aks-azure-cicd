@@ -1,20 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tls-example-ingress
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
-  tls:
-  - hosts:
-      - https-example.foo.com
-    secretName: testsecret-tls
   rules:
-  - host: https-example.foo.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: service1
-            port:
-              number: 80
+    - http:
+        paths:
+          - path: /?(.*)
+          # UPDATE THIS LINE ABOVE
+            backend:
+              serviceName: contact-frontend-cluster-ip-service
+              servicePort: 4200
+          - path: /backend/?(.*)
+          # UPDATE THIS LINE ABOVE
+            backend:
+              serviceName: contact-backend-server-cluster-ip
+              servicePort: 8080
