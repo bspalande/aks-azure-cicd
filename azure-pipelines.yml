@@ -47,17 +47,7 @@ steps:
     tags: |
       latest
       $(Build.BuildId)
-- task: Kubernetes@1
-  inputs:
-    connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'contactsServiceConnection'
-    namespace: 'kube-system'
-    command: 'apply'
-    arguments: '-f ./contacts-deployment/k8s'
-    secretType: 'dockerRegistry'
-    containerRegistryType: 'Container Registry'
-    dockerRegistryEndpoint: 'Docker-bhavanaaz400'
-    secretName: 'docker-secret'
+
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
