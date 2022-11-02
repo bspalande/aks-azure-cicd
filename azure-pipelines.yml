@@ -47,12 +47,22 @@ steps:
     tags: |
       latest
       $(Build.BuildId)
-
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
-    namespace: 'kube-system'
+    
+    command: 'apply'
+    arguments: '-f ./contacts-deployment/k8s'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Container Registry'
+    dockerRegistryEndpoint: 'Docker-bhavanaaz400'
+    secretName: 'docker-secret'
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'contactsServiceConnection'
+    
     command: 'set'
     arguments: 'image deployment/contact-frontend-deployment contacts-frontend=bhavanaaz400/contacts-frontend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
@@ -62,7 +72,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
-    namespace: 'kube-system'
+    
     command: 'set'
     arguments: 'image deployment/contact-backend-deployment contacts-api=bhavanaaz400/contacts-backend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
