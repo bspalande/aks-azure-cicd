@@ -51,7 +51,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
-    namespace: 'default'
+    namespace: 'ingress-nginx'
     command: 'apply'
     arguments: '-f ./contacts-deployment/k8s'
     secretType: 'dockerRegistry'
