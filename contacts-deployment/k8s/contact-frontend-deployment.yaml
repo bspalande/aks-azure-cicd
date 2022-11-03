@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: contacts-frontend
-          image: raghav141988/contacts-frontend
+          image: bhavanaaz400/contacts-frontend
           ports:
             - containerPort: 4200

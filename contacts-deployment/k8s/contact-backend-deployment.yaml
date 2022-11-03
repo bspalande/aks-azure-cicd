@@ -14,7 +14,7 @@ spec:
     spec:
         containers:
           - name: contacts-api
-            image: raghav141988/contacts-backend
+            image: bhavanaaz400/contacts-backend
             ports:
               - containerPort: 8080
             env: 
