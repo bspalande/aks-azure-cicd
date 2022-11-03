@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Ingress
 metadata:
   name: ingress-service
-  annotations:
-    kubernetes.io/ingress.class: public
 spec:
   rules:
     - http:
@@ -18,3 +16,4 @@ spec:
             backend:
               serviceName: contact-backend-server-cluster-ip
               servicePort: 8080
+              
