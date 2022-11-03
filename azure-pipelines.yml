@@ -16,16 +16,6 @@ pool:
 
 steps:
 
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'contacts-backend/pom.xml'
-    goals: 'clean verify'
-    publishJUnitResults: false
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
 
 - task: Docker@2
   inputs:
