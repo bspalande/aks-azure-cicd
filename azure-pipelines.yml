@@ -62,7 +62,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
-    namespace: 'ingress-nginx'
+    namespace: 'default'
     command: 'set'
     arguments: 'image deployment/contact-frontend-deployment contacts-frontend=bhavanaaz400/contacts-frontend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
@@ -72,7 +72,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'contactsServiceConnection'
-    namespace: 'ingress-nginx'
+    namespace: 'default'
     command: 'set'
     arguments: 'image deployment/contact-backend-deployment contacts-api=bhavanaaz400/contacts-backend:$(Build.BuildId)'
     secretType: 'dockerRegistry'
