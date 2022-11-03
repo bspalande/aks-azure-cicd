@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mango-persistent-volume-claim
-  namespace: ingress-nginx
+  namespace: default
 spec:
   accessModes:
     - ReadWriteOnce

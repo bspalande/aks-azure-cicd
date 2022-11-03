@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: contact-frontend-deployment
-  namespace: ingress-nginx
+  namespace: default
 spec:
   replicas: 1
   selector:

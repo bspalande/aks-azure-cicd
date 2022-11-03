@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: contacts-mango-cluster-ip-service
-  namespace: ingress-nginx
+  namespace: default
 spec:
   type: ClusterIP
   selector:
