@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  contactAPI: 'http://35.222.131.185/backend/api/contacts'
+  contactAPI: 'http://20.62.153.165/backend/api/contacts'
 };
 
 /*
